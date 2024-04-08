@@ -77,3 +77,4 @@ The core function of the app, it should handle the incoming data and generate th
 
 1. Data transmission between client/server ends, especially under Stateless Architecture.
 2. Configuring OCR and NLP.
+3. Testing, be honest, I know nothing about how to do testing in a professional way.
