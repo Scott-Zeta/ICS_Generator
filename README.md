@@ -78,3 +78,21 @@ The core function of the app, it should handle the incoming data and generate th
 1. Data transmission between client/server ends, especially under Stateless Architecture.
 2. Configuring OCR and NLP.
 3. Testing, be honest, I know nothing about how to do testing in a professional way.
+
+# Logs
+
+## Day 1 08/04/2024
+
+### Finshed
+
+- Desgin and Plan
+
+### Doing
+
+- Django server initial and config
+
+### Read
+
+- [Basic strcuture and workflow of Django app](https://docs.djangoproject.com/en/5.0/intro/tutorial01/)
+
+- [DB and ORM config in Django](https://docs.djangoproject.com/en/5.0/intro/tutorial02/)
