@@ -4,3 +4,6 @@ from django.http import HttpResponse
 # Create your views here.
 def index(request):
     return HttpResponse("Generator Core Index.")
+
+def upload(request):
+    return HttpResponse("Upload entry point.")
