@@ -105,7 +105,7 @@ The core function of the app, it should handle the incoming data and generate th
 
 ### Doing
 
-- Django server initial and config
+- Django server config
 
 ### Read and Research
 
