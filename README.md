@@ -91,8 +91,24 @@ The core function of the app, it should handle the incoming data and generate th
 
 - Django server initial and config
 
-### Read
+### Read and Research
 
 - [Basic strcuture and workflow of Django app](https://docs.djangoproject.com/en/5.0/intro/tutorial01/)
 
 - [DB and ORM config in Django](https://docs.djangoproject.com/en/5.0/intro/tutorial02/)
+
+## Day 2 09/04/2024
+
+### Finshed
+
+- Implement a crud dash board on index by applying concept acquired in Day 1.
+
+### Doing
+
+- Django server initial and config
+
+### Read and Research
+
+- [View Page and Template, url setting](https://docs.djangoproject.com/en/5.0/intro/tutorial03/)
+
+- [Form and Basic request handle, F functions for race condition in DB operation](https://docs.djangoproject.com/en/5.0/intro/tutorial04/)
