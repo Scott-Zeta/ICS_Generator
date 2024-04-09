@@ -18,3 +18,7 @@ def index(request):
 def upload(request):
     context ={}
     return HttpResponse("Upload Entry Point")
+
+def download(request):
+    context ={}
+    return HttpResponse("Download Entry Point")
