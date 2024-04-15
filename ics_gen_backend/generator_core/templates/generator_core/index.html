@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <header>
+      <h1>{{title}}</h1>
+      <p>Server Time: {{server_time}}</p>
+    </header>
+    <main>
+      <section>
+        <h2>Recent Upload Entry hit record</h2>
+        {%if recent_upload_record %}
+        <table>
+          <thead>
+            <tr>
+              <th>Entry ID</th>
+              <th>Time Stamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for record in recent_upload_record %}
+            <tr>
+              <td>{{record.id}}</td>
+              <td>{{record.formatted_time}}</td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+        {%else%}
+        <p>No recent upload record</p>
+        {%endif%}
+      </section>
+      <section>
+        <h2>Recent Download Entry hit record</h2>
+        {%if recent_download_record %}
+        <table>
+          <thead>
+            <tr>
+              <th>Entry ID</th>
+              <th>Time Stamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for record in recent_download_record %}
+            <tr>
+              <td>{{record.id}}</td>
+              <td>{{record.formatted_time}}</td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+        {%else%}
+        <p>No recent download record</p>
+        {%endif%}
+      </section>
+    </main>
+  </body>
+</html>
