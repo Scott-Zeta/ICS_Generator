@@ -32,6 +32,8 @@ class IndexView(TemplateView):
 
 @api_view(['POST'])
 def upload(request):
+    new_record = UploadRecord()
+    new_record.save()
     return Response("Upload Entry Point")
 
 @api_view(['GET'])
