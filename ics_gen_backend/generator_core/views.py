@@ -4,6 +4,7 @@ from django.utils import timezone
 from .models import UploadRecord, DownloadRecord
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 
 # Generic View
 class IndexView(TemplateView):
@@ -20,11 +21,12 @@ class IndexView(TemplateView):
         context["recent_download_record"] = recent_download_record
         return context
 
-@api_view(['POST'])
-def upload(request):
-    new_record = UploadRecord()
-    new_record.save()
-    return Response("Upload Entry Point")
+
+class PostView(APIView):
+    def post(self, request, *args, **kwargs):
+        new_record = UploadRecord()
+        new_record.save()
+        return Response("Upload Entry Point")
 
 @api_view(['GET'])
 def download(request):
