@@ -2,7 +2,8 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse
 from django.utils import timezone
 from .models import UploadRecord, DownloadRecord
-
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 # Previous View
 # def index(request):
 #     template = loader.get_template('generator_core/index.html')
@@ -29,10 +30,10 @@ class IndexView(TemplateView):
         context["recent_download_record"] = recent_download_record
         return context
 
+@api_view(['POST'])
 def upload(request):
-    context ={}
-    return HttpResponse("Upload Entry Point")
+    return Response("Upload Entry Point")
 
+@api_view(['GET'])
 def download(request):
-    context ={}
-    return HttpResponse("Download Entry Point")
+    return Response("Download Entry Point")

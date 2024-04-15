@@ -7,7 +7,7 @@ urlpatterns = [
     # ex: /generator_core/
     path("", IndexView.as_view(), name="index"),
     # ex: /generator_core/upload/
-    path("upload/", views.upload, name="upload"),
+    path("upload/", views.upload),
     # ex: /generator_core/download/
-    path("download/", views.download, name="download")
+    path("download/", views.download)
 ]
