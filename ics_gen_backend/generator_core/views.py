@@ -36,4 +36,6 @@ def upload(request):
 
 @api_view(['GET'])
 def download(request):
+    new_record = DownloadRecord()
+    new_record.save()
     return Response("Download Entry Point")
