@@ -32,7 +32,7 @@ class PostView(APIView):
             new_record = UploadRecord()
             new_record.save()
             return Response({"Message":"Valid Input","Data":serializer.validated_data.get('text','')}, status=status.HTTP_201_CREATED)
-        return Response({"Message": "Invalid Data"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"Message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def download(request):
