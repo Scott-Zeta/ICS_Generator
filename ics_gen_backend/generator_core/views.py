@@ -1,10 +1,12 @@
 from django.views.generic import TemplateView
-from django.http import HttpResponse
 from django.utils import timezone
 from .models import UploadRecord, DownloadRecord
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
+from rest_framework import status
+from .serializers import PostSerializer
+from rest_framework.parsers import JSONParser
 
 # Generic View
 class IndexView(TemplateView):
@@ -23,10 +25,14 @@ class IndexView(TemplateView):
 
 
 class PostView(APIView):
-    def post(self, request, *args, **kwargs):
-        new_record = UploadRecord()
-        new_record.save()
-        return Response("Upload Entry Point")
+    parser_classes = [JSONParser]
+    def post(self, request):
+        serializer = PostSerializer(data=request.data)
+        if serializer.is_valid():
+            new_record = UploadRecord()
+            new_record.save()
+            return Response({"Message":"Valid Input","Data":serializer.validated_data.get('text','')}, status=status.HTTP_201_CREATED)
+        return Response({"Message": "Invalid Data"}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def download(request):
