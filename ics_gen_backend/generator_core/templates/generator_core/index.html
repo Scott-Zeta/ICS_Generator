@@ -24,7 +24,7 @@
             {%for record in recent_upload_record %}
             <tr>
               <td>{{record.id}}</td>
-              <td>{{record.acess_time}}</td>
+              <td>{{record.formatted_time}}</td>
             </tr>
             {%endfor%}
           </tbody>
@@ -47,7 +47,7 @@
             {%for record in recent_download_record %}
             <tr>
               <td>{{record.id}}</td>
-              <td>{{record.acess_time}}</td>
+              <td>{{record.formatted_time}}</td>
             </tr>
             {%endfor%}
           </tbody>
