@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework import status
 from .serializers import PostSerializer
-from rest_framework.parsers import JSONParser
+from rest_framework.parsers import MultiPartParser, FormParser
 
 # Generic View
 class IndexView(TemplateView):
@@ -25,14 +25,17 @@ class IndexView(TemplateView):
 
 
 class PostView(APIView):
-    parser_classes = [JSONParser]
+    parser_classes = [MultiPartParser, FormParser]
     def post(self, request):
         serializer = PostSerializer(data=request.data)
         if serializer.is_valid():
             new_record = UploadRecord()
             new_record.save()
-            return Response({"Message":"Valid Input","Data":serializer.validated_data.get('text','')}, status=status.HTTP_201_CREATED)
-        return Response({"Message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+            text_wait_for_process = serializer.validated_data.get('text','')
+            image_wait_for_process = serializer.validated_data.get('image','')
+            # more process here
+            return Response({"Message":"Valid Input"}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def download(request):
