@@ -130,3 +130,21 @@ The core function of the app, it should handle the incoming data and generate th
 - [Rest API for Django](https://radixweb.com/blog/create-rest-api-using-django-rest-framework)
 
 - [Input Paser, validation and Serializers](https://www.django-rest-framework.org/)
+
+## Day 4 18/04/2024
+
+### Finshed
+
+- Serializaer for Server side input validation
+
+- TestCase for Serializaer
+
+### Doing
+
+- Testing Upload API Entry Point request and response, combine with Serializaer
+
+### Read and Research
+
+- [Django Testing](https://docs.djangoproject.com/en/5.0/topics/testing/overview/)
+
+- [Form fields and SimpleUploadedFile](https://docs.djangoproject.com/en/5.0/ref/forms/fields/)
