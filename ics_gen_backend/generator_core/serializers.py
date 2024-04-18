@@ -12,14 +12,14 @@ class PostSerializer(serializers.Serializer):
     
     def validate_image(self, value):
         if value:
-            if value.size > 5 * 1024*1024:
-                raise serializers.ValidationError("File can not larger than 5MB")
+            if value.size > 1 * 1024 * 1024:
+                raise serializers.ValidationError("File can not larger than 1MB")
             
             try:
                 img = Image.open(value)
-                if not img.format.lower() in ['jpg','jpeg','png','webp','svg','gif']:
+                if not img.format.lower() in ['jpg','jpeg','png','webp','gif']:
                     img.close()
-                    raise serializers.ValidationError("File format not supported")
+                    raise serializers.ValidationError("Image format not supported")
                 img.close()
             except IOError:
                 raise serializers.ValidationError("File is not a valid image")
