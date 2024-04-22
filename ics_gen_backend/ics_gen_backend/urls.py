@@ -18,6 +18,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path("generator_core/", include("generator_core.urls")),
+    path("generator_core/", include("generator_core.urls", namespace='generator_core')),
     path('admin/', admin.site.urls),
 ]
