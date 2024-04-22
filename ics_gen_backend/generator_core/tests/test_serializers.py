@@ -2,7 +2,7 @@ from django.test import TestCase
 from ..serializers import PostSerializer
 from django.core.files.uploadedfile import SimpleUploadedFile
 
-class PostSerializerTestCase(TestCase):
+class UpLoad_Post_SerializerTestCase(TestCase):
     def test_validation_error_when_both_fields_empty(self):
         # Testing Empty Data
         serializer = PostSerializer(data={})
