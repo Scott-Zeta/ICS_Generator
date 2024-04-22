@@ -9,29 +9,27 @@ class UploadViewTests(APITestCase):
         self.url = reverse("generator_core:upload")
         
     def test_valid_double_input(self):
-        # Test Valid Input with Text and Image
-        with open('generator_core/tests/sample_images/valid_image.png', 'rb') as file:
-            uploaded_file = SimpleUploadedFile('valid_image.png', file.read(), content_type='image/png')
-            data = {'text': 'a' * 500, 'image': uploaded_file}
-            response = self.client.post(self.url, data, format='multipart')
-            self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-            self.assertEqual(response.data, {"Message":"Valid Input"})
+        # Test Three Valid Input Cases
+        text = "a" * 500
+        test_cases = [
+            {'text': text, 'file': 'valid_image.png'},
+            {'text': text},
+            {'file': 'valid_image.png'}
+        ]
+
+        for case in test_cases:
+            data = {}
+            if 'text' in case:
+                data['text'] = case['text']
+            if 'file' in case:
+                # Have to open file multiple time because of the file pointer in file stream
+                with open(f'generator_core/tests/sample_images/{case["file"]}', 'rb') as file:
+                    uploaded_file = SimpleUploadedFile(case["file"], file.read(), content_type='image/png')
+                    data['image'] = uploaded_file
             
-    def test_valid_text_only_input(self):
-        # Test Valid Input with Text Only
-        data = {'text': 'a' * 500}
-        response = self.client.post(self.url, data, format='multipart')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data, {"Message":"Valid Input"})
-        
-    def test_valid_image_only_input(self):
-        # Test Valid Input with Image Only
-        with open('generator_core/tests/sample_images/valid_image.png', 'rb') as file:
-            uploaded_file = SimpleUploadedFile('valid_image.png', file.read(), content_type='image/png')
-            data = {'image': uploaded_file}
             response = self.client.post(self.url, data, format='multipart')
             self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-            self.assertEqual(response.data, {"Message":"Valid Input"})
+            self.assertEqual(response.data, {"Message": "Valid Input"})
             
     def test_invalid_request_format(self):
         # Test Invalid Request Format
