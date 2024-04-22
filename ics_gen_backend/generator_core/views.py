@@ -7,6 +7,9 @@ from rest_framework.views import APIView
 from rest_framework import status
 from .serializers import PostSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Generic View
 class IndexView(TemplateView):
@@ -38,6 +41,7 @@ class UploadView(APIView):
                 return Response({"Message":"Valid Input"}, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
+            logger.error(f"An error occurred: {str(e)}")
             return Response({"Message":f"Internal Server Error:{str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['GET'])
