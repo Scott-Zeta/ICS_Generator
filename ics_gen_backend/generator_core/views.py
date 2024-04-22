@@ -31,6 +31,8 @@ class UploadView(APIView):
     parser_classes = [MultiPartParser, FormParser]
     def post(self, request):
         try:
+            if not request.content_type.startswith('multipart/form-data'):
+                return Response({"Message":"Unsupported Media Type"}, status=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE)
             serializer = PostSerializer(data=request.data)
             if serializer.is_valid():
                 new_record = UploadRecord()
