@@ -1,9 +1,15 @@
 from django.views.generic import TemplateView
-from django.http import HttpResponse
 from django.utils import timezone
 from .models import UploadRecord, DownloadRecord
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
+from rest_framework import status
+from .serializers import PostSerializer
+from rest_framework.parsers import MultiPartParser, FormParser
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Generic View
 class IndexView(TemplateView):
@@ -20,11 +26,25 @@ class IndexView(TemplateView):
         context["recent_download_record"] = recent_download_record
         return context
 
-@api_view(['POST'])
-def upload(request):
-    new_record = UploadRecord()
-    new_record.save()
-    return Response("Upload Entry Point")
+
+class UploadView(APIView):
+    parser_classes = [MultiPartParser, FormParser]
+    def post(self, request):
+        try:
+            if not request.content_type.startswith('multipart/form-data'):
+                return Response({"Message":"Unsupported Media Type"}, status=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE)
+            serializer = PostSerializer(data=request.data)
+            if serializer.is_valid():
+                new_record = UploadRecord()
+                new_record.save()
+                text_wait_for_process = serializer.validated_data.get('text','')
+                image_wait_for_process = serializer.validated_data.get('image','')
+                # more process implementation here
+                return Response({"Message":"Valid Input"}, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            logger.error(f"An error occurred: {str(e)}")
+            return Response({"Message":f"Internal Server Error:{str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['GET'])
 def download(request):
