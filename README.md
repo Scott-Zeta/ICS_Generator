@@ -148,3 +148,26 @@ The core function of the app, it should handle the incoming data and generate th
 - [Django Testing](https://docs.djangoproject.com/en/5.0/topics/testing/overview/)
 
 - [Form fields and SimpleUploadedFile](https://docs.djangoproject.com/en/5.0/ref/forms/fields/)
+
+## Day 4 22/04/2024
+
+### Finshed
+
+- TestCase for API Upload entry point
+
+- Testing for entire server input validation
+
+- Detailed Architecture Design
+
+### Doing
+
+There is two path can do seperately
+
+- For API Architecture, look deeper into WebSocket, Celery and Asynchronous Tasks, Redis
+- For function components, Optical Characters Recognition(OCR), Nature Language Processing(NLP)
+
+### Read and Research
+
+- [Django Channels](https://channels.readthedocs.io/en/stable/index.html)
+
+- [WebSocekt API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
