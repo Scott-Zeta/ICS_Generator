@@ -68,10 +68,29 @@ The core function of the app, it should handle the incoming data and generate th
 #### Tools might be used
 
 - Basic Framework: Django
+- Transmission Protocal: Django REST Framework (HTTP), Django Channels (WebSocket)
 - Input validation: Django Serializer, Pillow(for image)
+- Asynchronous Task: Celery or TBD
 - Optical Character Recognition (OCR): Tesseract or TBD
 - Natural Language Processing (NLP): OpenAI, Azure AI, or TBD
 - ICS file generating: Ics.py
+- File temporary storage: Redis
+
+#### Architecture Design and Workflow
+
+1. Server recieve HTTP POST Request from client-side, start do validation
+2. If data pass the validation, start do Async processing, Return 201 to client-side. If not, Return 400, session terminated.
+
+##### Async Porcessing
+
+    1. Only data pass the validation can get in, processing start. WebSocket cosumer will sent progress info via WebSocket connection.
+    2. Image is under OCR processing if applied. Output plain text that in image.
+    3. Text from last step combined with text input, sent to Big Language Model for NLP. Output refined information in standard data structure (JSON/Python Dict)
+    4. Ics.py generate the ICS file based on refined infomation, ready for delivery.
+    5. Progress info and file will be dump in reasonable time if Websocket connection delayed not established, leave the system clean.
+
+3. Once client-side get 201 response, establishing WebSocekt connection to server-side.
+4. File deliver by Websocket connection. Once delivery complete, connection terminated.
 
 ## Challenges
 
