@@ -27,15 +27,18 @@ class IndexView(TemplateView):
 class UploadView(APIView):
     parser_classes = [MultiPartParser, FormParser]
     def post(self, request):
-        serializer = PostSerializer(data=request.data)
-        if serializer.is_valid():
-            new_record = UploadRecord()
-            new_record.save()
-            text_wait_for_process = serializer.validated_data.get('text','')
-            image_wait_for_process = serializer.validated_data.get('image','')
-            # more process implementation here
-            return Response({"Message":"Valid Input"}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            serializer = PostSerializer(data=request.data)
+            if serializer.is_valid():
+                new_record = UploadRecord()
+                new_record.save()
+                text_wait_for_process = serializer.validated_data.get('text','')
+                image_wait_for_process = serializer.validated_data.get('image','')
+                # more process implementation here
+                return Response({"Message":"Valid Input"}, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({"Message":f"Internal Server Error:{str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['GET'])
 def download(request):
