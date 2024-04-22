@@ -94,9 +94,9 @@ The core function of the app, it should handle the incoming data and generate th
 
 ## Challenges
 
-1. Data transmission between client/server ends, especially under Stateless Architecture.
+1. Have a more clear design of architecture for info transimisson, but still many issue may need clarify and overcome during implementation.
 2. Configuring OCR and NLP.
-3. Testing, be honest, I know nothing about how to do testing in a professional way.
+3. Have a brief idea of testing, but not sure can do it reliably for every components.
 
 # Logs
 
