@@ -168,7 +168,7 @@ The core function of the app, it should handle the incoming data and generate th
 
 - [Form fields and SimpleUploadedFile](https://docs.djangoproject.com/en/5.0/ref/forms/fields/)
 
-## Day 4 22/04/2024
+## Day 5 22/04/2024
 
 ### Finshed
 
