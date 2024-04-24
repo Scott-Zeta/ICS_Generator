@@ -71,7 +71,7 @@ The core function of the app, it should handle the incoming data and generate th
 - Transmission Protocal: Django REST Framework (HTTP), Django Channels (WebSocket)
 - Input validation: Django Serializer, Pillow(for image)
 - Asynchronous Task: Celery or TBD
-- Optical Character Recognition (OCR): Tesseract or TBD
+- Optical Character Recognition (OCR): Tesseract, Azure Computer Vision for handwriting
 - Natural Language Processing (NLP): OpenAI, Azure AI, or TBD
 - ICS file generating: Ics.py
 - File temporary storage: Redis
