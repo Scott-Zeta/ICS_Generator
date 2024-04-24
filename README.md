@@ -193,3 +193,31 @@ There is two path can do seperately
 - [Django Channels](https://channels.readthedocs.io/en/stable/index.html)
 
 - [WebSocekt API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
+
+## Day 6 24/04/2024
+
+### Finshed
+
+- OCR studying and tech stack comparison
+
+Tested many option for OCR. Since most open-source OCR libraries don't perform well on handwriting content. Current plan is add a option to pass image to Azure Computer Vision, for handwriting and error case.
+
+### Doing
+
+Implement Native and Cloud base OCR function
+
+### Read and Research
+
+- [OCR Unlocked: A Guide to Tesseract in Python with Pytesseract and OpenCV](https://nanonets.com/blog/ocr-with-tesseract/)
+
+- [How to easily do Handwriting Recognition using Machine Learning](https://nanonets.com/blog/handwritten-character-recognition/)
+
+- [pytesseract 0.3.10](https://pypi.org/project/pytesseract/)
+
+- [Tesseract documentation](https://tesseract-ocr.github.io/)
+
+- [2023 review of tools for Handwritten Text Recognition HTR — OCR for handwriting](https://www.reddit.com/r/computervision/comments/15er2y7/2023_review_of_tools_for_handwritten_text/)
+
+- [EasyOCR](https://www.jaided.ai/easyocr/tutorial/)
+
+- [Azure OCR - Optical Character Recognition](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-ocr)
