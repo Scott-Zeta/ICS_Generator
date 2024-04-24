@@ -90,7 +90,10 @@ The core function of the app, it should handle the incoming data and generate th
     5. Progress info and file will be dump in reasonable time if Websocket connection delayed not established, leave the system clean.
 
 3. Once client-side get 201 response, establishing WebSocekt connection to server-side.
-4. File deliver by Websocket connection. Once delivery complete, connection terminated.
+4. Associate the Websocket connection and initial POST Request with a session ID. There are two options:
+   - If allow anonymous access or solely focusing on core functions, generate a session id and sent it back in POST initial response. Client-side will establish connection with the ID, and validate by server-side.
+   - If authentication system required and implemented, use user session ID directly.
+5. File deliver by Websocket connection. Once delivery complete, connection terminated.
 
 ## Challenges
 
