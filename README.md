@@ -221,3 +221,31 @@ Implement Native and Cloud base OCR function
 - [EasyOCR](https://www.jaided.ai/easyocr/tutorial/)
 
 - [Azure OCR - Optical Character Recognition](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-ocr)
+
+## Day 7 29/04/2024
+
+### Finshed
+
+- Setup Azure Cloud Computer Vision Service
+
+- Config, test and compare different service API versions
+
+### Doing
+
+- Integrating Cloud service into apps
+
+- Intergrating Native service, add a handwriting option/Error reaction feature to enable Azure service
+
+### Read and Research
+
+- [python-dotenv 1.0.1 for environment virables](https://pypi.org/project/python-dotenv/)
+
+- [Quickstart: Azure AI Vision v3.2 GA Read](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/quickstarts-sdk/client-library?tabs=linux%2Cvisual-studio&pivots=programming-language-rest-api#read-printed-and-handwritten-text)
+
+- [Computer Vision API (v3.2)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
+
+- [Quickstart: Extract printed and handwritten text using the Computer Vision REST API and Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/ComputerVision/REST)
+
+- [OCR for images (version 4.0)](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-ocr)
+
+- [Computer Vision APIs (2024-02-01)](https://eastus.dev.cognitive.microsoft.com/docs/services/Cognitive_Services_Unified_Vision_API_2024-02-01/operations/61d65934cd35050c20f73ab6)
