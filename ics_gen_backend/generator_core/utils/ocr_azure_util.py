@@ -13,11 +13,10 @@ load_dotenv()
 # Set the subscription key and endpoint for the OCR service
 endpoint = os.getenv('AZURE_OCR_ENDPOINT')
 subscription_key = os.getenv('AZURE_OCR_KEY')
-text_recognition_url = endpoint + "/vision/v3.1/read/analyze"
+text_recognition_url = endpoint + "/vision/v3.2/read/analyze"
 
 # Set image_url to the URL of an image that you want to recognize.
-image_path = os.path.expanduser("~/Downloads/image_67178753.jpeg")
-
+image_path = "../tests/sample_images/chinese_tra.jpg"
 headers = {'Ocp-Apim-Subscription-Key': subscription_key,
            'Content-Type': 'application/octet-stream'}
 image_data = open(image_path, 'rb').read()
