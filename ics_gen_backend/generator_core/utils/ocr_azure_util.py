@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 import requests
-import sys
 import time
 import json
 from PIL import Image
@@ -17,12 +16,13 @@ subscription_key = os.getenv('AZURE_OCR_KEY')
 text_recognition_url = endpoint + "/vision/v3.1/read/analyze"
 
 # Set image_url to the URL of an image that you want to recognize.
-image_url = "https://learn.microsoft.com/azure/ai-services/computer-vision/media/quickstarts/presentation.png"
+image_path = os.path.expanduser("~/Downloads/image_67178753.jpeg")
 
-headers = {'Ocp-Apim-Subscription-Key': subscription_key}
-data = {'url': image_url}
+headers = {'Ocp-Apim-Subscription-Key': subscription_key,
+           'Content-Type': 'application/octet-stream'}
+image_data = open(image_path, 'rb').read()
 response = requests.post(
-    text_recognition_url, headers=headers, json=data)
+    text_recognition_url, headers=headers, data=image_data)
 response.raise_for_status()
 
 # Extracting text requires two API calls: One call to submit the
@@ -54,7 +54,7 @@ if ("analyzeResult" in analysis):
                 for line in analysis["analyzeResult"]["readResults"][0]["lines"]]
 
 # Display the image and overlay it with the extracted text.
-image = Image.open(BytesIO(requests.get(image_url).content))
+image = Image.open(BytesIO(image_data))
 ax = plt.imshow(image)
 for polygon in polygons:
     vertices = [(polygon[0][i], polygon[0][i+1])
