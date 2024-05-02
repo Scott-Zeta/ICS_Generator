@@ -7,7 +7,8 @@ load_dotenv()
 # Set the subscription key and endpoint for the OCR service
 endpoint = os.getenv('AZURE_OCR_ENDPOINT')
 subscription_key = os.getenv('AZURE_OCR_KEY')
-text_recognition_url = endpoint + "/computervision/imageanalysis:analyze?api-version=2024-02-01&features=read&model-version=latest"
+api_config = os.getenv('OCR_API_CONFIG')
+text_recognition_url = endpoint + api_config
 
 # Set image_url to the URL of an image that you want to recognize.
 image_path = "../../tests/sample_images/handwriting_printed_mixed_photo.jpeg"
