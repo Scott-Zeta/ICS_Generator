@@ -249,3 +249,19 @@ Implement Native and Cloud base OCR function
 - [OCR for images (version 4.0)](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-ocr)
 
 - [Computer Vision APIs (2024-02-01)](https://eastus.dev.cognitive.microsoft.com/docs/services/Cognitive_Services_Unified_Vision_API_2024-02-01/operations/61d65934cd35050c20f73ab6)
+
+## Day 8 2/05/2024
+
+### Finshed
+
+- Integrate Azure OCR moduel
+
+### Doing
+
+- Implement Test Case for Azure OCR moduel
+
+- Consider about OCR overall logic (Native)
+
+### Read and Research
+
+- Discussed with other about the app architecture design on Functional Programming Meetup Social Drinks Event.
