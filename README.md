@@ -264,4 +264,4 @@ Implement Native and Cloud base OCR function
 
 ### Read and Research
 
-- Discussed with other about the app architecture design on Functional Programming Meetup Social Drinks Event.
+- [Discussed with other about the app architecture design on Functional Programming Meetup Social Drinks Event](./Documentation/Dev_Log/discussion_file_delivery.md)
