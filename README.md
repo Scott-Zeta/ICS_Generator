@@ -71,7 +71,7 @@ The core function of the app, it should handle the incoming data and generate th
 - Transmission Protocal: Django REST Framework (HTTP), Django Channels (WebSocket)
 - Input validation: Django Serializer, Pillow(for image)
 - Asynchronous Task: Celery or TBD
-- Optical Character Recognition (OCR): Tesseract or TBD
+- Optical Character Recognition (OCR): Tesseract, Azure Computer Vision for handwriting
 - Natural Language Processing (NLP): OpenAI, Azure AI, or TBD
 - ICS file generating: Ics.py
 - File temporary storage: Redis
@@ -193,3 +193,75 @@ There is two path can do seperately
 - [Django Channels](https://channels.readthedocs.io/en/stable/index.html)
 
 - [WebSocekt API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
+
+## Day 6 24/04/2024
+
+### Finshed
+
+- OCR studying and tech stack comparison
+
+Tested many option for OCR. Since most open-source OCR libraries don't perform well on handwriting content. Current plan is add a option to pass image to Azure Computer Vision, for handwriting and error case.
+
+### Doing
+
+Implement Native and Cloud base OCR function
+
+### Read and Research
+
+- [OCR Unlocked: A Guide to Tesseract in Python with Pytesseract and OpenCV](https://nanonets.com/blog/ocr-with-tesseract/)
+
+- [How to easily do Handwriting Recognition using Machine Learning](https://nanonets.com/blog/handwritten-character-recognition/)
+
+- [pytesseract 0.3.10](https://pypi.org/project/pytesseract/)
+
+- [Tesseract documentation](https://tesseract-ocr.github.io/)
+
+- [2023 review of tools for Handwritten Text Recognition HTR — OCR for handwriting](https://www.reddit.com/r/computervision/comments/15er2y7/2023_review_of_tools_for_handwritten_text/)
+
+- [EasyOCR](https://www.jaided.ai/easyocr/tutorial/)
+
+- [Azure OCR - Optical Character Recognition](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-ocr)
+
+## Day 7 29/04/2024
+
+### Finshed
+
+- Setup Azure Cloud Computer Vision Service
+
+- Config, test and compare different service API versions
+
+### Doing
+
+- Integrating Cloud service into apps
+
+- Intergrating Native service, add a handwriting option/Error reaction feature to enable Azure service
+
+### Read and Research
+
+- [python-dotenv 1.0.1 for environment virables](https://pypi.org/project/python-dotenv/)
+
+- [Quickstart: Azure AI Vision v3.2 GA Read](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/quickstarts-sdk/client-library?tabs=linux%2Cvisual-studio&pivots=programming-language-rest-api#read-printed-and-handwritten-text)
+
+- [Computer Vision API (v3.2)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
+
+- [Quickstart: Extract printed and handwritten text using the Computer Vision REST API and Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/ComputerVision/REST)
+
+- [OCR for images (version 4.0)](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-ocr)
+
+- [Computer Vision APIs (2024-02-01)](https://eastus.dev.cognitive.microsoft.com/docs/services/Cognitive_Services_Unified_Vision_API_2024-02-01/operations/61d65934cd35050c20f73ab6)
+
+## Day 8 2/05/2024
+
+### Finshed
+
+- Integrate Azure OCR moduel
+
+### Doing
+
+- Implement Test Case for Azure OCR moduel
+
+- Consider about OCR overall logic (Native)
+
+### Read and Research
+
+- [Discussed with other about the app architecture design on Functional Programming Meetup Social Drinks Event](./Documentation/Dev_Log/discussion_file_delivery.md)
