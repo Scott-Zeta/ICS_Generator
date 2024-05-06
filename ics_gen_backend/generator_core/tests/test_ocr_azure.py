@@ -1,4 +1,5 @@
 from django.test import TestCase
+import requests
 import requests_mock
 from dotenv import load_dotenv
 import os
@@ -97,3 +98,14 @@ class TestOCR_Azure(TestCase):
         with self.assertRaises(OCR_Azure_Exception) as context:
             ocr_azure(self.valid_image)
         self.assertIn(f'HTTP Error {code}: {message}', str(context.exception))
+        
+    @requests_mock.Mocker()
+    def test_ocr_azure_network_error(self, m):
+        # Simulate a network error
+        url = self.endpoint + self.api_config
+        m.post(url, exc=requests.exceptions.ConnectTimeout)
+
+        with self.assertRaises(OCR_Azure_Exception) as context:
+            ocr_azure(self.valid_image)
+        
+        self.assertIn('Internal Error', str(context.exception))
