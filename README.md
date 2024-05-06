@@ -71,7 +71,7 @@ The core function of the app, it should handle the incoming data and generate th
 - Transmission Protocal: Django REST Framework (HTTP), Django Channels (WebSocket)
 - Input validation: Django Serializer, Pillow(for image)
 - Asynchronous Task: Celery or TBD
-- Optical Character Recognition (OCR): Tesseract, Azure Computer Vision for handwriting
+- Optical Character Recognition (OCR): Azure Computer Vision
 - Natural Language Processing (NLP): OpenAI, Azure AI, or TBD
 - ICS file generating: Ics.py
 - File temporary storage: Redis
@@ -250,7 +250,7 @@ Implement Native and Cloud base OCR function
 
 - [Computer Vision APIs (2024-02-01)](https://eastus.dev.cognitive.microsoft.com/docs/services/Cognitive_Services_Unified_Vision_API_2024-02-01/operations/61d65934cd35050c20f73ab6)
 
-## Day 8 2/05/2024
+## Day 8 02/05/2024
 
 ### Finshed
 
@@ -265,3 +265,15 @@ Implement Native and Cloud base OCR function
 ### Read and Research
 
 - [Discussed with other about the app architecture design on Functional Programming Meetup Social Drinks Event](./Documentation/Dev_Log/discussion_file_delivery.md)
+
+## Day 9 06/05/2024
+
+### Finshed
+
+- Azure ORC moduel testcase
+
+- Removed the native Tesseract solution, as it can not reach expected performance
+
+### Doing
+
+- Do research and implementation on further NLP model service
