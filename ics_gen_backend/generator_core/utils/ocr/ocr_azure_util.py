@@ -45,8 +45,9 @@ def ocr_azure(validated_image):
         else:
             return ""
     except requests.exceptions.HTTPError:
+        status_code = response.status_code
         error_message = response.json().get('error', {}).get('message', 'Unknown Azure service error')
-        raise OCR_Azure_Exception(f"Error: {error_message}")
+        raise OCR_Azure_Exception(f"HTTP Error {status_code}: {error_message}")
     except Exception as e:
         raise OCR_Azure_Exception(f"Internal Error: {str(e)}")
 
