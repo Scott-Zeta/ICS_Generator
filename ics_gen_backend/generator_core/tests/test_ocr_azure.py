@@ -81,3 +81,17 @@ class TestOCR_Azure(TestCase):
         result = ocr_azure(self.valid_image)
         self.assertEqual(result, "You must be the change you wish to see in the world !")
     
+    @requests_mock.Mocker()
+    def test_ocr_azure_service_error(self, m):
+        # Simulate the API response for service error
+        url = self.endpoint + self.api_config
+        m.post(url, json={
+            "error": {
+                "code": "401",
+                "message": "Access denied due to invalid subscription key or wrong API endpoint. Make sure to provide a valid key for an active subscription and use a correct regional API endpoint for your resource."
+            }
+            }, status_code=401)
+
+        with self.assertRaises(OCR_Azure_Exception) as context:
+            ocr_azure(self.valid_image)
+        self.assertIn('Error:', str(context.exception))
