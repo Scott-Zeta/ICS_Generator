@@ -277,3 +277,23 @@ Implement Native and Cloud base OCR function
 ### Doing
 
 - Do research and implementation on further NLP model service
+
+### Read and Research
+
+- [Requests-mock’s documentation](https://requests-mock.readthedocs.io/en/latest/index.html)
+
+## Day 10 07/05/2024
+
+### Doing
+
+- Research on Azure Language Service
+
+- Mainly Focus on Named Entity Recognition (NER), but also not deny to other possiblity
+
+### Read and Research
+
+- [What is Azure AI Language?](https://learn.microsoft.com/en-us/azure/ai-services/language-service/overview)
+
+- [What is Named Entity Recognition (NER) in Azure AI Language?](https://learn.microsoft.com/en-us/azure/ai-services/language-service/named-entity-recognition/overview)
+
+- [Supported Named Entity Recognition (NER) entity categories and entity types](https://learn.microsoft.com/en-us/azure/ai-services/language-service/named-entity-recognition/concepts/named-entity-categories?tabs=ga-api)
