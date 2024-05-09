@@ -297,3 +297,39 @@ Implement Native and Cloud base OCR function
 - [What is Named Entity Recognition (NER) in Azure AI Language?](https://learn.microsoft.com/en-us/azure/ai-services/language-service/named-entity-recognition/overview)
 
 - [Supported Named Entity Recognition (NER) entity categories and entity types](https://learn.microsoft.com/en-us/azure/ai-services/language-service/named-entity-recognition/concepts/named-entity-categories?tabs=ga-api)
+
+## Day 11 08/05/2024
+
+### Finished
+
+- Comparing different solutions for NLP, include NER, Azure OpenAI, Azure Machine Learning.
+
+- For NER, it can not understand the logic between different name entity, it will become confusing with more complex nature language logic. Meanwhile, it can not identify the difference between a quantitive number or a room number.
+
+- For Azure Open AI, it only accpet the enterprise user by request, if not possible for deploy a model by personal usage.
+
+- For Azure Machine Learning Studio, train my own model is not practical for short term and cost.
+
+- I like the prompt flow in ML Studio, and I can use other other non-Azure OpenAI API in there. However, it must be delopyed as an instance, and it will be charged by hours. It is totally out of budget and workloads the app might face.
+
+- Finding an suitable service is not an easy thing, probably I have to turn back the public OpenAI service.
+
+### Doing
+
+- Probably going to turn to public OpenAI for implementing NLP module
+
+### Read and Research
+
+- [Try out Extract Name Entity](https://language.cognitive.azure.com/tryout/namedEntities)
+
+- [Azure AI Studio](https://azure.microsoft.com/en-us/products/ai-studio)
+
+- [Azure OpenAI frequently asked questions](https://learn.microsoft.com/en-us/azure/ai-services/openai/faq)
+
+- [Tutorial: Build and deploy a question and answer copilot with prompt flow in Azure AI Studio](https://learn.microsoft.com/en-us/azure/ai-studio/tutorials/deploy-copilot-ai-studio)
+
+- [What is Azure Machine Learning prompt flow](https://learn.microsoft.com/en-au/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow?view=azureml-api-2)
+
+- [Develop a flow](https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/how-to-develop-flow?view=azureml-api-2)
+
+- [Deploy a flow as a managed online endpoint for real-time inference](https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/how-to-deploy-for-real-time-inference?view=azureml-api-2)
