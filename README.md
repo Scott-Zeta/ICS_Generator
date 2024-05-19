@@ -100,6 +100,7 @@ The core function of the app, it should handle the incoming data and generate th
 1. Have a more clear design of architecture for info transimisson, but still many issue may need clarify and overcome during implementation.
 2. Configuring OCR and NLP.
 3. Have a brief idea of testing, but not sure can do it reliably for every components.
+4. Set up Async task and Websocket connection.
 
 # Logs
 
@@ -333,3 +334,23 @@ Implement Native and Cloud base OCR function
 - [Develop a flow](https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/how-to-develop-flow?view=azureml-api-2)
 
 - [Deploy a flow as a managed online endpoint for real-time inference](https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/how-to-deploy-for-real-time-inference?view=azureml-api-2)
+
+## Day 12 19/05/2024
+
+### Finished
+
+- Configure OpenAI Service
+
+- Create Prompt for parsing nature language
+
+### Doing
+
+- Moduelise the NLP service, integrate into app
+
+- Do tesing for NLP moduel
+
+### Read and Research
+
+- [Return in JSON Mode](https://platform.openai.com/docs/guides/text-generation/json-mode)
+
+- [Open AI API Reference](https://platform.openai.com/docs/api-reference/introduction)
