@@ -5,17 +5,18 @@ from openai import OpenAI
 load_dotenv()
 client = OpenAI(api_key = os.getenv('OPENAI_NLP_KEY'))
 
-completion = client.chat.completions.create(
+response = client.chat.completions.create(
   model="gpt-3.5-turbo",
   response_format={ "type": "json_object" },
   messages=[
-    {"role": "system", "content": "You are an assitant help convert the event information included in nature language to JSON output."},
-    {"role": "system", "content": "Your output format always follow the following guidelines: {\"events\": [{\"name\":'The name of the event', \"begin\": 'The begin time of the event, always write in ISO time format, if timezone not been specific mentioned, leave it as local time format', \"end\": 'The end time of the event, always write in ISO time format, if timezone not been specific mentioned, leave it as local time format', \"location\": 'The location of the event, put the url if it is an online event', \"description\": The description of the event, \"url\":'the url that relative to the event', \"organizer\": 'Write the organiser as an ics file required format', \"category\": 'The category of the event', \"RRULE\": 'The Recurring event rule, it shall be write in an ics file required format'}, ...more events in the array]}"},
-    {"role": "system", "content": "If the date format in nature language provide by user is not clear, determine based on the language or location context. If still can not be determined, use british english date format."},
-    {"role": "system", "content": "You shall not provide any information not relative to an event. Anything uncertain or not provided by user, you shall leave it as an empty string in your output."},
-    {"role": "user", "content": ""}
+    {"role": "system", "content": "You are an assistant tasked with converting event information provided in natural language into a structured JSON format suitable for creating ICS files."},
+    {"role": "system", "content": "Output JSON should adhere to this structure: {\"events\": [{\"name\": \"Event name\", \"begin\": \"Start time in ISO format, use local time if timezone not specified\", \"end\": \"Start time in ISO format, use local time if timezone not specified\", \"location\": \"Location or URL if online event\", \"description\": \"Event description\", \"url\": \"Related event URL\", \"organizer\": \"Organizer in required ICS format\", \"category\": \"Event category\", \"RRULE\": \"ICS recurring rule if applicable\"}, ...]}"},
+    {"role": "system", "content": "If the date and time provided are unclear, interpret them based on the context or default to British English date format. Leave any unspecified or uncertain information as an empty string in the output."},
+    {"role": "system", "content": "Focus solely on information relevant to event creation. Omit any unrelated details."},
+    {"role": "system", "content": "If text provided doesn't contain event information, return an JSON object with {\"error\": \"No event information found.\"}"},
+    {"role": "user", "content": "There is a team meeting every Tuesday at 3 PM starting from June 5, 2024, at our main office in London. The meeting will cover project updates and is expected to end by 4 PM."},
   ]
 )
 
-print(completion.choices[0].message.content)
+print(response.choices[0].message.content)
 
