@@ -2,10 +2,10 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 
-load_dotenv()
-client = OpenAI(api_key = os.getenv('OPENAI_NLP_KEY'))
-
-response = client.chat.completions.create(
+def nlp_openai(input_text):
+  load_dotenv()
+  client = OpenAI(api_key = os.getenv('OPENAI_NLP_KEY'))
+  response = client.chat.completions.create(
   model="gpt-3.5-turbo",
   response_format={ "type": "json_object" },
   messages=[
@@ -14,9 +14,12 @@ response = client.chat.completions.create(
     {"role": "system", "content": "If the date and time provided are unclear, interpret them based on the context or default to British English date format. Leave any unspecified or uncertain information as an empty string in the output."},
     {"role": "system", "content": "Focus solely on information relevant to event creation. Omit any unrelated details."},
     {"role": "system", "content": "If text provided doesn't contain event information, return an JSON object with {\"error\": \"No event information found.\"}"},
-    {"role": "user", "content": "There is a team meeting every Tuesday at 3 PM starting from June 5, 2024, at our main office in London. The meeting will cover project updates and is expected to end by 4 PM."},
-  ]
-)
+    {"role": "user", "content": input_text},
+    ]
+  )
+  event_json = response.choices[0].message.content
+  print(event_json)
+  return event_json
 
-print(response.choices[0].message.content)
 
+# nlp_openai("Ellena's Birthday party on 12th December at 7pm at the Roystonpark playground. Meanwhile, John's wedding is on 15th December at 2pm on the same location.")
