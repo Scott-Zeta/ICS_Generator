@@ -3,10 +3,21 @@ from dotenv import load_dotenv
 import openai
 from openai import OpenAI
 
-def nlp_openai(input_text):
-  load_dotenv()
-  configuration = {"api_key": os.getenv("OPENAI_NLP_KEY"), "model": os.getenv('OPENAI_MODEL')}
+load_dotenv()
+configuration = {
+    "api_key": os.getenv("OPENAI_NLP_KEY"),
+    "model": os.getenv('OPENAI_MODEL')
+}
 
+class NLP_OpenAI_Exception(Exception):
+    """Exception for errors encountered with OpenAI service."""
+    pass
+
+def nlp_openai(input_text):
+  
+  if not input_text.strip():
+        raise ValueError("There isn't valid text to process.")
+      
   try:
     client = OpenAI(api_key = configuration["api_key"])
     response = client.chat.completions.create(
@@ -25,16 +36,13 @@ def nlp_openai(input_text):
     print(event_json)
     return event_json
   except openai.APIError as e:
-    #Handle API error here, e.g. retry or log
-    print(f"OpenAI API returned an API Error: {e}")
+    raise NLP_OpenAI_Exception(f"OpenAI API returned an API Error: {e}")
   except openai.APIConnectionError as e:
-    #Handle connection error here
-    print(f"Failed to connect to OpenAI API: {e}")
+    raise NLP_OpenAI_Exception(f"Failed to connect to OpenAI API: {e}")
   except openai.RateLimitError as e:
-    #Handle rate limit error (we recommend using exponential backoff)
-    print(f"OpenAI API request exceeded rate limit: {e}")
+    raise NLP_OpenAI_Exception(f"OpenAI API request exceeded rate limit: {e}")
   except Exception as e:
-    print(f"An unexpected error occurred: {e}")
+    raise NLP_OpenAI_Exception(f"An unexpected error occurred: {e}")
 
 
-nlp_openai("Ellena's Birthday party on 12th December at 7pm at the Roystonpark playground. Meanwhile, John's wedding is on 15th December at 2pm on the same location.")
+nlp_openai("There is not valid event info in here.")
