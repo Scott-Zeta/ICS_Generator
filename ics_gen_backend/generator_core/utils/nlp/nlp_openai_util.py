@@ -2,11 +2,19 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 
+class NLP_OpenAI_Exception(Exception):
+    """Exception for errors encountered with OpenAI NLP service."""
+    pass
+
 def nlp_openai(input_text):
   load_dotenv()
-  client = OpenAI(api_key = os.getenv('OPENAI_NLP_KEY'))
+  configuration = {"api_key": os.getenv('OPENAI_NLP_KEY'), "model": os.getenv('OPENAI_MODEL')}
+  if not all([configuration["api_key"], configuration["model"]]):
+    raise NLP_OpenAI_Exception("Missing required OpenAI NLP configuration.")
+  
+  client = OpenAI(api_key = configuration["api_key"])
   response = client.chat.completions.create(
-  model="gpt-3.5-turbo",
+  model=configuration["model"],
   response_format={ "type": "json_object" },
   messages=[
     {"role": "system", "content": "You are an assistant tasked with converting event information provided in natural language into a structured JSON format suitable for creating ICS files."},
@@ -22,4 +30,4 @@ def nlp_openai(input_text):
   return event_json
 
 
-# nlp_openai("Ellena's Birthday party on 12th December at 7pm at the Roystonpark playground. Meanwhile, John's wedding is on 15th December at 2pm on the same location.")
+nlp_openai("Ellena's Birthday party on 12th December at 7pm at the Roystonpark playground. Meanwhile, John's wedding is on 15th December at 2pm on the same location.")
