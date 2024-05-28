@@ -36,8 +36,7 @@ def nlp_openai(input_text):
       ]
     )
     event_json = response.choices[0].message.content
-    print(event_json)
-    print(type(event_json))
+    # print(event_json)
     return event_json
   except openai.APIError as e:
     raise NLP_OpenAI_Exception(f"OpenAI API returned an API Error: {e}")
@@ -49,4 +48,4 @@ def nlp_openai(input_text):
     raise NLP_OpenAI_Exception(f"An unexpected error occurred: {e}")
 
 
-nlp_openai("I have a meeting with John from 2pm to 4pm on 3rd of June at the room 101, Elder Hall, University of Adelaide.")
+# nlp_openai("I have a meeting with John from 2pm to 4pm on 3rd of June at the room 101, Elder Hall, University of Adelaide.")
