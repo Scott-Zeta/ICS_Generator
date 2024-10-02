@@ -354,3 +354,7 @@ Implement Native and Cloud base OCR function
 - [Return in JSON Mode](https://platform.openai.com/docs/guides/text-generation/json-mode)
 
 - [Open AI API Reference](https://platform.openai.com/docs/api-reference/introduction)
+
+## Day 13 02/10/2024
+
+After back from painful health problems, I totally lost any memory about this project. Now I don't know what did I do, where shall I start, whether it is possible to continue.
